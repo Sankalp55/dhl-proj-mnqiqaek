@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: false,
+  darkMode: 'class',
   content: [
     './app/**/*.{ts,tsx,js,jsx}',
     './components/**/*.{ts,tsx,js,jsx}',
@@ -9,25 +9,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: 'var(--color-primary)',
-        'primary-foreground': 'var(--color-primary-foreground)',
-        secondary: 'var(--color-secondary)',
-        'secondary-foreground': 'var(--color-secondary-foreground)',
-        accent: 'var(--color-accent)',
-        'accent-foreground': 'var(--color-accent-foreground)',
-        background: 'var(--color-background)',
-        foreground: 'var(--color-foreground)',
-        muted: 'var(--color-muted)',
-        'muted-foreground': 'var(--color-muted-foreground)',
-        border: 'var(--color-border)',
-        ring: 'var(--color-ring)',
-        destructive: 'var(--color-destructive)',
-        card: 'var(--color-card)',
-        'card-foreground': 'var(--color-card-foreground)'
-      },
       borderRadius: {
         xl: '0.75rem'
+      },
+      colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: 'hsl(var(--primary))',
+        'primary-foreground': 'hsl(var(--primary-foreground))',
+        secondary: 'hsl(var(--secondary))',
+        'secondary-foreground': 'hsl(var(--secondary-foreground))',
+        accent: 'hsl(var(--accent))',
+        'accent-foreground': 'hsl(var(--accent-foreground))',
+        muted: 'hsl(var(--muted))',
+        'muted-foreground': 'hsl(var(--muted-foreground))',
+        card: 'hsl(var(--card))',
+        'card-foreground': 'hsl(var(--card-foreground))',
+        border: 'hsl(var(--border))',
+        ring: 'hsl(var(--ring))'
       },
       fontFamily: {
         heading: ['"Arial Black"', 'Arial', 'sans-serif'],

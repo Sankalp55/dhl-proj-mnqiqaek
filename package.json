@@ -1,8 +1,8 @@
 {
-  "name": "dhl-logistics-corporate-site",
+  "name": "dhl-logistics-site",
   "version": "1.0.0",
+  "description": "DHL Logistics — Modern Shipping & Logistics",
   "private": true,
-  "description": "Corporate logistics website with services, pricing plans, integrations, testimonials, FAQs, and a client-side contact form for quotes and support.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,17 +10,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.3",
+    "clsx": "^2.1.0",
+    "framer-motion": "^11.0.17",
+    "lucide-react": "^0.326.0",
     "next": "14.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwindcss": "3.4.1",
-    "postcss": "8.4.38",
-    "autoprefixer": "10.4.16",
-    "clsx": "2.1.0"
+    "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
-    "@types/node": "20.11.30",
-    "@types/react": "18.2.55",
-    "typescript": "5.4.5"
+    "@types/node": "25.5.2",
+    "@types/react": "19.2.14",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
   }
 }

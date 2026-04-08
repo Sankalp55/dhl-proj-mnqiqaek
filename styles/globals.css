@@ -1,0 +1,15 @@
+/* Global styles */
+
+/* If you're using Tailwind, keep these directives. If not, they are harmless but can be removed. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}

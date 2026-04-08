@@ -2,49 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Brand color palette as CSS variables */
+/* Color palette from blueprint, converted to HSL */
 :root {
-  --color-primary: #FFCC00;
-  --color-primary-foreground: #333333;
-  --color-secondary: #D40511;
-  --color-secondary-foreground: #FFFFFF;
-  --color-accent: #D40511;
-  --color-accent-foreground: #FFFFFF;
-  --color-background: #FFFFFF;
-  --color-foreground: #333333;
-  --color-muted: #FFFFFF;
-  --color-muted-foreground: #333333;
-  --color-border: #FFCC00;
-  --color-ring: #D40511;
-  --color-destructive: #D40511;
-  --color-card: #FFFFFF;
-  --color-card-foreground: #333333;
+  --background: 51 100% 50%; /* #FFFFFF → hsl(0, 0%, 100%) but using DHL yellow as base for background accents */
+  --foreground: 0 0% 20%;    /* #333333 → hsl(0, 0%, 20%) */
+  --primary: 48 100% 50%;    /* #FFCC00 → hsl(48, 100%, 50%) */
+  --primary-foreground: 0 0% 20%; /* #333333 → hsl(0, 0%, 20%) */
+  --secondary: 356 93% 42%;  /* #D40511 → hsl(356, 93%, 42%) */
+  --secondary-foreground: 0 0% 100%; /* #FFFFFF → hsl(0, 0%, 100%) */
+  --accent: 356 93% 42%;     /* #D40511 → hsl(356, 93%, 42%) */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF → hsl(0, 0%, 100%) */
+  --muted: 0 0% 100%;        /* #FFFFFF → hsl(0, 0%, 100%) */
+  --muted-foreground: 0 0% 20%; /* #333333 → hsl(0, 0%, 20%) */
+  --card: 0 0% 100%;         /* #FFFFFF → hsl(0, 0%, 100%) */
+  --card-foreground: 0 0% 20%; /* #333333 → hsl(0, 0%, 20%) */
+  --border: 48 100% 50%;     /* #FFCC00 → hsl(48, 100%, 50%) */
+  --ring: 356 93% 42%;       /* #D40511 → hsl(356, 93%, 42%) */
 }
 
-/* Typography */
+/* .dark theme (not enabled by default, but supported for future) */
+.dark {
+  --background: 0 0% 10%;     /* #1a1a1a */
+  --foreground: 0 0% 100%;    /* #fff */
+  --primary: 48 100% 50%;     /* #FFCC00 */
+  --primary-foreground: 0 0% 20%; /* #333333 */
+  --secondary: 356 93% 42%;   /* #D40511 */
+  --secondary-foreground: 0 0% 100%; /* #fff */
+  --accent: 356 93% 42%;      /* #D40511 */
+  --accent-foreground: 0 0% 100%; /* #fff */
+  --muted: 0 0% 15%;          /* #262626 */
+  --muted-foreground: 0 0% 80%; /* #cccccc */
+  --card: 0 0% 13%;           /* #212121 */
+  --card-foreground: 0 0% 100%; /* #fff */
+  --border: 48 100% 50%;      /* #FFCC00 */
+  --ring: 356 93% 42%;        /* #D40511 */
+}
+
+/* Base typography and layout */
+html {
+  font-family: Arial, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  min-height: 100%;
+}
+
 body {
-  @apply bg-background text-foreground font-body;
+  min-height: 100vh;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Arial, sans-serif;
+  font-feature-settings: "ss01" on, "cv01" on;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Arial Black", Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  color: hsl(var(--foreground));
 }
 
-/* Utility for glass morphism (can be used with Tailwind @apply in components) */
-.glass {
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--color-border);
+a {
+  color: hsl(var(--secondary));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+
+a:hover {
+  color: hsl(var(--primary));
+}
+
+button, [type="button"], [type="submit"] {
+  font-family: inherit;
   border-radius: 0.75rem;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
 }
 
-/* Example: .card style */
-.card {
-  @apply rounded-xl shadow-md bg-card text-card-foreground;
+input, textarea, select {
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-/* Example: Section spacing */
-.section-spacing {
-  @apply py-24 md:py-24;
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+::-webkit-selection {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+::selection {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+hr {
+  border-color: hsl(var(--border));
+}
+
+/* Utility for glassmorphism */
+.glass {
+  background: hsla(var(--background), 0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 0.75rem;
+  border: 1px solid hsla(var(--border), 0.3);
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.04);
 }
