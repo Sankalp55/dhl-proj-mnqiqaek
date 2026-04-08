@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand color palette as CSS variables */
+:root {
+  --color-primary: #FFCC00;
+  --color-primary-foreground: #333333;
+  --color-secondary: #D40511;
+  --color-secondary-foreground: #FFFFFF;
+  --color-accent: #D40511;
+  --color-accent-foreground: #FFFFFF;
+  --color-background: #FFFFFF;
+  --color-foreground: #333333;
+  --color-muted: #FFFFFF;
+  --color-muted-foreground: #333333;
+  --color-border: #FFCC00;
+  --color-ring: #D40511;
+  --color-destructive: #D40511;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #333333;
+}
+
+/* Typography */
+body {
+  @apply bg-background text-foreground font-body;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Arial Black", Arial, sans-serif;
+}
+
+/* Utility for glass morphism (can be used with Tailwind @apply in components) */
+.glass {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+}
+
+/* Example: .card style */
+.card {
+  @apply rounded-xl shadow-md bg-card text-card-foreground;
+}
+
+/* Example: Section spacing */
+.section-spacing {
+  @apply py-24 md:py-24;
+}
